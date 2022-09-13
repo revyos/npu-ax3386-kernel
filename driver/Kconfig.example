@@ -1,0 +1,29 @@
+menuconfig VHA
+       tristate "IMG neural network accelerator"
+       select GENERIC_ALLOCATOR
+
+if VHA
+choice 
+      prompt "VHA platform"
+      config VHA_DUMMY
+             bool "driver runs without hardware"
+      config VHA_DT_EXAMPLE
+             depends on OF
+             bool "driver uses device tree"
+      config VHA_ORION
+             bool "driver runs on IMG Orion/SFF platform"
+endchoice
+config TARGET_OSID
+      int
+      default 0
+choice
+      prompt "VHA hardware series"
+      config HW_AX2
+             bool "driver runs AX2145 and AX2185 hardware"
+      config HW_AX3
+             bool "driver runs AX31xx/AX33xx/AX35xx hardware"
+      config HW_AX3_MC
+             bool "driver runs AXAX3797 multicore hardware"
+endchoice
+endif
+
