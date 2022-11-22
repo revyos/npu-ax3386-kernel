@@ -639,7 +639,7 @@ int img_mem_import(struct device *device, struct mem_ctx *ctx, int heap_id,
 	*buf_id = buffer->id;
 	mutex_unlock(&mem_man->mutex);
 
-	pr_info("%s buf_hnd %#llx heap %d (%s) buffer %d size %zu\n", __func__,
+	pr_debug("%s buf_hnd %#llx heap %d (%s) buffer %d size %zu\n", __func__,
 		buf_hnd, heap_id, get_heap_name(heap->type), *buf_id, size);
 	pr_debug("%s heap %d ctx %p created buffer %d (%p) size %zu\n",
 		__func__, heap_id, ctx, *buf_id, buffer, size);
@@ -710,7 +710,7 @@ int img_mem_export(struct device *device, struct mem_ctx *ctx, int buf_id,
 
 	mutex_unlock(&mem_man->mutex);
 
-	pr_info("%s buf_hnd %#llx heap %d (%s) buffer %d size %zu\n", __func__,
+	pr_debug("%s buf_hnd %#llx heap %d (%s) buffer %d size %zu\n", __func__,
 		*buf_hnd, heap->id, get_heap_name(heap->type), buf_id, size);
 	pr_debug("%s heap %d ctx %p exported buffer %d (%p) size %zu\n",
 		__func__, heap->id, ctx, buf_id, buffer, size);
@@ -2117,7 +2117,7 @@ static void _img_mmu_ctx_destroy(struct mmu_ctx *ctx)
 
 		map = list_first_entry(&ctx->mappings,
 							struct mmu_ctx_mapping, mmu_ctx_entry);
-		pr_info("%s: found mapped buffer %d (size %zu)\n",
+		pr_debug("%s: found mapped buffer %d (size %zu)\n",
 			__func__, map->buffer->id, map->buffer->request_size);
 		_img_mmu_unmap(map);
 		kfree(map);

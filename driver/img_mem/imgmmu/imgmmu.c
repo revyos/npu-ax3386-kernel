@@ -196,7 +196,7 @@ void _mmu_log(int err, const char *function, uint32_t line,
 		pr_err("ERROR: %s:%u %s", function, line, _message_);
 	else
 		/* info, debug, ... */
-		pr_info("%s:%u %s", function, line, _message_);
+		pr_debug("%s:%u %s", function, line, _message_);
 }
 
 /*

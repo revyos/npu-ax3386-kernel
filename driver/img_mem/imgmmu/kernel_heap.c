@@ -95,7 +95,7 @@ static void pool_crawler(struct gen_pool *pool,
 #else
 	unsigned long size = (chunk->end_addr - chunk->start_addr + 1);
 #endif
-	pr_info("pool 0x%p has chunk 0x%lx to 0x%lx (size = %lu B)\n",
+	pr_debug("pool 0x%p has chunk 0x%lx to 0x%lx (size = %lu B)\n",
 			data, chunk->start_addr, chunk->end_addr, size);
 }
 
