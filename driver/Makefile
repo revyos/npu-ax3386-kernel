@@ -6,6 +6,7 @@ obj-$(CONFIG_VHA) += vha/ img_mem/
 obj-$(CONFIG_LOKI) += fenrir_loki/
 
 subdir-ccflags-y += -I$(src)/include
+subdir-ccflags-y += -DTRACE_INCLUDE_PATH=$(PWD)/include
 # if CONFIG_DYNAMIC_DEBUG is not defined kernel wide as in Android 11+, 
 # we still can use the facility if CONFIG_DYNAMIC_DEBUG_CORE is defined
 subdir-ccflags-$(CONFIG_DYNAMIC_DEBUG_CORE) += -DDYNAMIC_DEBUG_MODULE
